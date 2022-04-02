@@ -454,6 +454,7 @@ export default {
       levelsLeaderboard: {
         disabled: "Level system on this guild is disabled",
         noLeaderboard: "There is no levelling leaderboard on this server",
+        onlineOutNow: `Hey, our online leaderboard is out now!`
       },
       setLevel: {
         disabled: "Level system on this guild is disabled",
