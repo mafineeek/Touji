@@ -33,9 +33,9 @@ export default class Command implements BaseCommand {
 
         for (const part of formatted) {
             const embed = sender.success("")
-            for (const { userID } of part) {
+            for (const { userID, level, xp } of part) {
                 i++;
-                embed.description += `**#${i}.** \`${(await client.users.fetch(userID))?.tag || lang.resolveUnknown()}\`\n`;
+                embed.description += `**#${i}.** \`${(await client.users.fetch(userID))?.tag || lang.resolveUnknown()}\` - ${level} level (\`${xp}xp\`)\n`;
             }
             embeds.push(embed);
         }
