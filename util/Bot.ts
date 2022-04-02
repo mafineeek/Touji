@@ -54,6 +54,10 @@ export default class Bot extends Client {
             require(`./intervals/${f}`).default(this);
         })
         
+        Config.PERMISSIONS.developer.forEach((developer: string) => {
+          this.users.fetch(developer)
+        })
+
         await this.readCommands();
         await this.readEvents();
     }
