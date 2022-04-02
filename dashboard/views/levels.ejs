@@ -12,31 +12,36 @@
 <div class="levels center" style="margin-top: 110px; font-weight: 400;">
     <h1></h1>
 </div>
-<% let i = 0;
-leveling.forEach(lvl => {
-    i++;
-    const user = bot.users.cache.get(lvl.userid);
-    if (!user) return;
-%>
-<div class="row">
-    <div class="topka-div">
+<center>
 
-        <img src="<%= user.displayAvatarURL({format: "png"}) %>"
-             class="topka-img">
-             <br>
-             <h3><%= i %>. miejsce</h3>
-        <code>
-            <%= user.tag %>
-        </code>
-        <% if(req.user && guild.members.cache.get(req.user.id).hasPermission('MANAGE_GUILD')){ %>
-        <a href="/api/leveling/resetlevel/<%=guild.id%>/<%= user.id %>" type="submit" class="btn-admin">
-            <i class='bx bx-trash'></i>
-        </a>
-        <%}%>
-    </div>
-    <% }) %>
-</div>
+    <% let i = 0;
+    let levels = []
+    leveling.forEach(lvl => {
+        i++;
+        bot.users.fetch(lvl.userID);
+        levels.push(lvl)
+        const user = bot.users.cache.get(lvl.userID);
+        if (!user) return;
+    %>
+    
+        <div class="topka-div">
+            <center>
+                <img src="<%= user.displayAvatarURL({format: "png"}) %>"
+                     class="topka-img">
+                     <br>
+                     <h3><%= i %>. <code>
+                    <%= user.tag %>
+                </code><%= levels.find(u => u.userID == user.id).level%> level <%= levels.find(u => u.userID == user.id).xp%> XP</h3>
+                
+                <% if(req.user && guild.members.cache.get(req.user.id).permissions.has('MANAGE_GUILD')){ %>
+                <a href="/api/leveling/resetlevel/<%=guild.id%>/<%= user.id %>" type="submit" class="btn-admin">
+                    <i class='bx bx-trash'></i>
+                </a>
+                <%}%>
+            </center>
+        </div>
+        <% }) %>
+</center>
 
-<%- include('partials/footer', {version: client.version}) %>
 
 </body>

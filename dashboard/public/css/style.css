@@ -544,7 +544,7 @@ input[type=color], select, textarea {
     background-color: var(--first-color);
     padding: 20px;
     border-radius: 15px;
-    width: 100%;
+    width: 75%;
     max-width: 93%;
 }
 
