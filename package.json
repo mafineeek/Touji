@@ -9,15 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iamsador/Touji-v3.git"
+    "url": "git+https://github.com/devfluxtron/Touji.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/iamsador/Touji-v3/issues"
-  },
-  "homepage": "https://github.com/iamsador/Touji-v3#readme",
   "dependencies": {
     "@discordjs/builders": "^0.12.0",
     "@discordjs/rest": "^0.3.0",
