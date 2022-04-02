@@ -17,6 +17,7 @@ export default class Bot extends Client {
     public logger = new Logger();
     public database: Database = null!;
     public helpers: typeof Helpers = Helpers;
+    public version: string = "0.3.8";
     private restHandler: any;
     public constructor(options: ClientOptions) {
         super(options);
