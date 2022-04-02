@@ -1,0 +1,45 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/imports') %>
+    <title>
+        <%- pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+</head>
+<body>
+<%- include('partials/sidebar') %>
+<br>
+<div class="center div-das">
+    <h1>Witaj Johnix!</h1>
+    <p>Zarządzaj Profilem
+    <hr>
+    </p>
+</div>
+<div class="row">
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Profil</h1>
+            <br>
+            <p>Ustaw swój profil</p>
+        </div>
+        <br>
+
+        <p>Nazwa:</p>
+        <input type="text" id="prefix" name="prefix" placeholder="Twój prefix">
+        <br>
+        <br>
+        <p>Wiek:</p>
+        <input type="number" id="prefix" name="prefix" placeholder="Twój prefix">
+        <br>
+        <br>
+        <p>Województwo:</p>
+        <input type="text" id="prefix" name="prefix" placeholder="Twój prefix">
+        <br>
+        <br>
+        <a href="/dashboard/<%= guild.id %>" class="btn-invite">Zapisz</a>
+        <br> <br>
+    </div>
+</div>
+</body>

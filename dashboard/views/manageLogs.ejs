@@ -1,0 +1,59 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/imports') %>
+    <title>
+        <%- pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+</head>
+<body>
+<%- include('partials/sidebar') %>
+<%- include('partials/navbar') %>
+<% if (alert && alert.alert) { %>
+    <br>
+    <div class="alert <%= alert.alert %>" role="alert">
+        <%= alert.desc %>
+    </div>
+<% } %>
+
+<br> <br> <br>
+<div class="center div-das">
+    <h1>Witaj <%= user.username %></h1>
+    <hr>
+    <br>
+    <br>
+    <button class="btn-invite" onclick="window.location.href='/dashboard/<%= settings.id %>'">Powrót</button>
+</div>
+<div class="row">
+    <div style="max-width: 93%;" class="card-guilds">
+        <br><br><br><br><br>
+        <form method="POST" action="/dashboard/<%= settings.id %>/logs/update">
+            <p>Status</p>
+            <select id="status" name="status">
+                <option id="on" <%= settings.logs.status ? `selected="selected">` : "" %>>Włączone</option>
+                <option id="off" <%= !settings.logs.status ? `selected="selected">` : "" %>>Wyłączone</option>
+            </select>
+            <br>
+            <br>
+            <p>Kanał</p>
+            <select id="channel" name="channel">
+                <option <%= !settings.logs.channel ? `selected="selected">` : "" %>>Brak</option>
+                <% guild.channels.cache.filter((r) => r.type !== "voice" && r.type !== "category").sort((a, b) => a.rawPosition - b.rawPosition).forEach((r) => { %>
+                    <% if (r.id === settings.logs.channel) { %>
+                        <option value="<%= r.id %>" selected="selected"><%= r.name %></option>
+                    <% } else { %>
+                        <option value="<%= r.id %>"><%= r.name %></option>
+                    <% } %>
+                <% }); %>
+
+            </select>
+            <br><br>
+            <button type="submit" class="btn-invite">Zapisz</button>
+        </form>
+        <br><br><br><br><br>
+    </div>
+</div>
+<%- include('partials/footer', {version: client.version}) %>
+</body>

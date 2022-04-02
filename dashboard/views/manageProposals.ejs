@@ -1,0 +1,100 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/imports') %>
+    <title>
+        <%- pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+</head>
+<body>
+<%- include('partials/sidebar') %>
+<%- include('partials/navbar') %>
+<% if (alert && alert.alert) { %>
+    <br>
+    <div class="alert <%= alert.alert %>" role="alert">
+        <%= alert.desc %>
+    </div>
+<% } %>
+<br> <br> <br>
+<div class="center div-das">
+    <h1>Witaj <%= user.username %></h1>
+    <hr>
+    <br>
+    <br>
+    <button class="btn-invite" onclick="window.location.href='/dashboard/<%= settings.id %>'">Powrót</button>
+</div>
+<br> <br> <br>
+<div class="row">
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Zarządzaj kanałami</h1>
+            <br>
+            <p>Zapisane kanały</p>
+        </div>
+        <br>
+        <div class="prefixes" style="min-height: 250px; padding: 20px;">
+            <% settings.proposals.channels.forEach((item, index) => { %>
+                <form method="POST" action="/dashboard/<%= settings.id %>/settings/proposals/channels/remove">
+                    <div class="div-prefix">
+                        <p><%= bot.channels.cache.get(item)?.name || "Nie znaleziono" %></p>
+                        <br>
+                        <br>
+                        <div style="display: flex; float: right; cursor: pointer; font-size: 30px; margin-top: -30px; color: red;">
+                            <input type="text" name="delchannel" value="<%= index %>" style="display: none;"/>
+                            <button type="submit" id="prefix-remove<%= index %>" class="none">
+                                <i class='bx bx-trash'></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            <% }); %>
+        </div>
+        <br>
+        <form method="POST" action="/dashboard/<%= settings.id %>/settings/proposals/channels/add">
+            <p>Dodaj kanał</p>
+            <select id="channel" name="channel">
+                <% guild.channels.cache.filter((r) => r.type !== "voice" && r.type !== "category").sort((a, b) => a.rawPosition - b.rawPosition).forEach((r) => { %>
+                    <% if (r.type === "category") { %>
+                        <option value="<%= r.id %>" disabled><%= r.name %></option>
+                    <% } %>
+                    <option value="<%= r.id %>"><%= r.name %></option>
+                <% }); %>
+            </select>
+            <br>
+            <br>
+            <br>
+            <button class="btn-invite">Dodaj</button>
+            <br> <br>
+            <br>
+        </form>
+    </div>
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Potrzebne rzeczy</h1>
+            <br>
+        </div>
+        <br>
+        <form method="POST" action="/dashboard/<%= settings.id %>/settings/proposals">
+
+            <p>Status</p>
+            <select id="status" name="status">
+                <option id="on" <%= settings.proposals.status ? `selected="selected">` : "" %>>Włączone</option>
+                <option id="off" <%= !settings.proposals.status ? `selected="selected">` : "" %>>Wyłączone</option>
+            </select>
+            <br>
+            <br>
+            <br>
+            <p>Komentarz</p>
+            <input name="comment" type="text" maxlength="2256" value="<%= settings.proposals.comment %>"/>
+            <br>
+            <br>
+            <br>
+            <button type="submit" class="btn-invite">Zapisz</button>
+            <br> <br>
+        </form>
+    </div>
+</div>
+<%- include('partials/footer', {version: client.version}) %>
+</body>

@@ -1,0 +1,42 @@
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+<nav class="navbar">
+    <div class="content">
+        <div class="logo">
+            <a href="#">Touji</a>
+        </div>
+        <ul class="menu-list">
+            <div class="icon cancel-btn">
+                <i class='bx bx-x'></i>
+            </div>
+            <li><a href="/">Główna</a></li>
+            <li><a href="/dashboard">Panel</a></li>
+            <li><a href="https://discord.gg/nE9BtwXVUW">Serwer Support</a></li>
+            <li><a href="/stats">Statystyki</a></li>
+        </ul>
+        <div class="icon menu-btn">
+            <i class='bx bxs-category-alt'></i>
+        </div>
+    </div>
+</nav>
+
+<script>
+    const body = document.querySelector("body");
+    const navbar = document.querySelector(".navbar");
+    const menuBtn = document.querySelector(".menu-btn");
+    const cancelBtn = document.querySelector(".cancel-btn");
+    menuBtn.onclick = () => {
+        navbar.classList.add("show");
+        menuBtn.classList.add("hide");
+        body.classList.add("disabled");
+    }
+    cancelBtn.onclick = () => {
+        body.classList.remove("disabled");
+        navbar.classList.remove("show");
+        menuBtn.classList.remove("hide");
+    }
+</script>
+</body>

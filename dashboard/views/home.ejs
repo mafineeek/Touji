@@ -1,0 +1,97 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/imports') %>
+    <title>
+        <%- pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="bg-color">
+    <%- include('partials/navbar') %>
+    <div class="text-main">
+        <div class="text">
+            <h1>Ulepsz swój serwer z botem</h1>
+            <p>Touji</p>
+        </div>
+        <div class="text-1">
+            <p>Komendy do zabawym, moderacyjne, ReactionRole oraz wszystko inne czego potrzebujesz!</p>
+            <p><span><%= bot.guilds.cache.size %></span> Serwerów i <span><%= bot.users.cache.size %></span>
+                użytkowników nam zaufało!</p>
+            <a href="https://discord.com/api/oauth2/authorize?bot_id=814064909313638450&permissions=8&scope=bot"
+               style="margin-bottom: 30px;" class="btn-invite"><i class='bx bxl-discord'></i>Zaproś</a>
+            <a href="/dashboard" style="margin-bottom: 30px;" class="btn-login">Zaloguj</a>
+            <br>
+        </div>
+    </div>
+</div>
+<div class="div-about">
+    <div class="main-about">
+        <br>
+        <h1>Nasze funkcje</h1>
+        <p>Informacje o funkcji w naszym bocie</p>
+        <hr>
+    </div>
+    <br>
+    <div class="about-center">
+        <p>• Reaction-role</p>
+        <p>• System propozycji</p>
+        <p>• Poziomy na chacie</p>
+        <p>• Powitania i pożegnania</p>
+        <p>• Autorespondery</p>
+        <p>• Wiele komend 4fun</p>
+        <p>• Narzędzia, np. userinfo, serverinfo</p>
+        <p>• Giveawaye</p>
+        <p>• Dashboard</p>
+        <p>• Zaawansowany system moderacji z case</p>
+        <p>• Starboard</p>
+        <p>• Antyinvite z whitelistami na wszystko (do ustawienia)</p>
+        <p>• Multiple prefix (możesz mieć wiele prefixów :0)</p>
+    </div>
+</div>
+
+
+<div class="uptade-div">
+    <div class="main-about">
+        <br>
+        <h1>Informacje</h1>
+        <p>Najnowsze informacje
+        <hr>
+    </div>
+    <div class="about-center" style="background-color: rgba(0, 0, 0, 0.137); border-radius: 30px; margin-top: 10px;">
+        <p>Udostępniono panel dla wszystkich użytkowników</p>
+    </div>
+    <div class="about-center" style="background-color: rgba(0, 0, 0, 0.137); border-radius: 30px; margin-top: 10px;">
+        <p>Otworzenie publicznej wersji beta</p>
+    </div>
+    <div class="about-center" style="background-color: rgba(0, 0, 0, 0.137); border-radius: 30px; margin-top: 10px;">
+        <p>Otworzenie zamkniętej wersji beta</p>
+    </div>
+    <div class="about-center" style="background-color: rgba(0, 0, 0, 0.137); border-radius: 30px; margin-top: 10px;">
+        <p>Postawiono bota na VPS (Działa 24/7)</p>
+    </div>
+</div>
+<div class="user-page">
+    <br>
+    <div class="main-about">
+        <br>
+        <h1>Team</h1>
+        <p>Who create Touji?
+        <hr>
+    </div>
+
+    <div class="row">
+        <div class="card-team">
+            <img class="logo-avatar"
+                 src="<%= bot.users.cache.get("831474539053449227").displayAvatarURL() %>">
+            <h1><%= bot.users.cache.get("831474539053449227").tag %></h1>
+            <p>Owner</p>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer', {version: '0.3.7'}) %>
+
+</body>
+

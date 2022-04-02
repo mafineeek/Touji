@@ -1,0 +1,80 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/imports') %>
+    <title>
+        <%- pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+</head>
+<body>
+<%- include('partials/sidebar') %>
+<%- include('partials/navbar') %>
+<% if (alert && alert.alert) { %>
+    <br>
+    <div class="alert <%= alert.alert %>" role="alert">
+        <%= alert.desc %>
+    </div>
+<% } %>
+<br> <br> <br>
+<div class="center div-das">
+    <h1>Witaj <%= user.username %></h1>
+    <hr>
+    <br>
+    <br>
+    <button class="btn-invite" onclick="window.location.href='/dashboard/<%= settings.id %>'">Powrót</button>
+</div>
+<br> <br> <br>
+<div class="row">
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Starboard</h1>
+            <br>
+        </div>
+        <br>
+        <form method="POST" action="/dashboard/<%= settings.id %>/settings/starboard">
+
+            <p>Status</p>
+            <select id="status" name="status">
+                <option id="on" <%= settings.starboard.status ? `selected="selected">` : "" %>>Włączone</option>
+                <option id="off" <%= !settings.starboard.status ? `selected="selected">` : "" %>>Wyłączone</option>
+            </select>
+            <br>
+            <br>
+            <br>
+            <p>Wymagana ilość gwiazdek</p>
+            <input name="minStars" type="text" maxlength="2256" value="<%= settings.starboard.reactionCount %>">
+            <br>
+            <br>
+            <br>
+            <p> Autor nie może gwiazdkować swoich wiadomości? </p>
+            <select name="authorStar">
+                <option id="on" <%= settings.starboard.authorStar ? `selected="selected">` : "" %>>Tak</option>
+                <option id="off" <%= !settings.starboard.authorStar ? `selected="selected">` : "" %>>Nie</option>
+            </select>
+            <br>
+            <br>
+            <br>
+            <p>Kanał</p>
+            <select id="channel" name="channel">
+                <option>Brak</option>
+                <% guild.channels.cache.filter((r) => r.type !== "voice" && r.type !== "category").sort((a, b) => a.rawPosition - b.rawPosition).forEach((r) => { %>
+                    <% if (r.id === settings.starboard.channel) { %>
+                        <option value="<%= r.id %>" selected="selected"><%= r.name %></option>
+                    <% } else { %>
+                        <option value="<%= r.id %>"><%= r.name %></option>
+                    <% } %>
+                <% }); %>
+
+            </select>
+            <br>
+            <br>
+            <br>
+            <button type="submit" class="btn-invite">Zapisz</button>
+            <br> <br>
+        </form>
+    </div>
+</div>
+<%- include('partials/footer', {version: client.version}) %>
+</body>

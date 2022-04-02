@@ -1,0 +1,92 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/imports') %>
+    <title>
+        <%- pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+</head>
+<body>
+<%- include('partials/sidebar') %>
+<%- include('partials/navbar') %>
+<% if (alert && alert.alert) { %>
+    <br>
+    <div class="alert <%= alert.alert %>" role="alert">
+        <%= alert.desc %>
+    </div>
+<% } %>
+<br> <br> <br>
+<div class="center div-das">
+    <h1>Witaj <%= user.username %></h1>
+    <hr>
+    <br>
+    <br>
+    <button class="btn-invite" onclick="window.location.href='/dashboard/<%= settings.id %>'">Powrót</button>
+</div>
+<div class="row">
+    <div style="max-width: 93%;" class="card-guilds">
+        <div class="blure">
+            <h1>Ustawianie powitań</h1>
+            <br>
+            <p>Ustaw powitania</p>
+        </div>
+        <br>
+        <br>
+        <form method="POST" action="/dashboard/<%= settings.id %>/settings/welcome">
+            <p>Status</p>
+            <select id="status" name="status">
+                <option id="on" <%= settings.welcome.status ? `selected="selected">` : "" %>>Włączone</option>
+                <option id="off" <%= !settings.welcome.status ? `selected="selected">` : "" %>>Wyłączone</option>
+            </select>
+            <br>
+            <br>
+            <p>Kanał</p>
+            <select id="channel" name="channel">
+                <option>Brak</option>
+                <% guild.channels.cache.filter((r) => r.type !== "voice" && r.type !== "category").sort((a, b) => a.rawPosition - b.rawPosition).forEach((r) => { %>
+                    <% if (r.id === settings.welcome.channel) { %>
+                        <option value="<%= r.id %>" selected="selected"><%= r.name %></option>
+                    <% } else { %>
+                        <option value="<%= r.id %>"><%= r.name %></option>
+                    <% } %>
+                <% }); %>
+            </select>
+            <br>
+            <br>
+            <p>Kolor</p>
+            <input type="color" id="color" name="color" value="<%= settings.welcome.color %>"/>
+            <br>
+            <br>
+            <p>Tytuł wiadomości:</p>
+            <input name="title" type="text" maxlength="2256" value="<%= settings.welcome.title %>"/>
+            <br>
+            <br>
+            <p>Opis:</p>
+            <input name="desc" type="text" maxlength="2256" value="<%= settings.welcome.message %>"/>
+            <br>
+            <br>
+            <button type="submit" class="btn-invite">Zapisz</button>
+            <br> <br>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div style="max-width: 93%;" class="card-guilds">
+        <h1>Zmienne:</h1>
+        <br>
+        <p> {guild} - Nazwa serwera (Touji | Wsparcie)</p>
+        <p>{guild.members} - Ilość osób (139)</p>
+        <p>{guild.id} - ID serwera (703156079890268180)</p>
+        <p>{user} - Oznaczenie użytkownika (@Aleks1123#0001)</p>
+        <p>{user.username} - Nazwa użytkownika (Aleks1123)</p>
+        <p>{user.tag} - Tag użytkownika (Aleks1123#0001)</p>
+        <p>{user.id} - ID użytkownika (435029733344804874)</p>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>
+<%- include('partials/footer', {version: client.version}) %>
+</body>

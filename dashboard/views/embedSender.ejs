@@ -1,0 +1,93 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/imports') %>
+    <title>
+        <%- pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+
+</head>
+<body>
+<%- include('partials/sidebar') %>
+<%- include('partials/navbar') %>
+
+<br> <br> <br>
+<% if (alert && alert.alert) { %>
+    <div class="alert <%= alert.alert %>" role="alert">
+        <%= alert.desc %>
+    </div>
+<% } %>
+<div class="center div-das">
+    <h1>Witaj <%= user.username %></h1>
+    <p> Skonfiguruj wiadomość embed </p>
+    <hr>
+    <br>
+    <br>
+    <button class="btn-invite" onclick="window.location.href='/dashboard/<%= settings.id %>'">Powrót</button>
+</div>
+<div class="row">
+    <div style="max-width: 93%;" class="card-guilds">
+        <div class="blure">
+            <h1>Tworzenie embeda</h1>
+            <br>
+            <p>Wyślij wiadomość Embed</p>
+        </div>
+        <br>
+        <br>
+        <form method="POST" action="/dashboard/<%= settings.id %>/settings/embed/create">
+            <p>Kanał</p>
+            <select id="channel" name="channel">
+                <% if (req.body.cleanedChannel) { %>
+                    <option value="<%= req.body.channel %>"><%= req.body.cleanedChannel %></option>
+                <% } %>
+                <% guild.channels.cache.filter((r) => r.type !== "voice").forEach((r) => { %>
+                    <% if (r.id === req.body.channel && req.body.cleanedChannel) return; %>
+                    <option value="<%= r.id %>"><%= r.name %></option>
+                <% }); %>
+            </select>
+            <br>
+            <br>
+            <p>Kolor*:</p>
+            <input type="color" id="color" name="color" value="#1cfc03"/>
+            <br>
+            <br>
+            <p>Tytuł*:</p>
+            <input name="title" type="text" maxlength="2256"/>
+            <br>
+            <br>
+            <p>Opis*:</p>
+            <input name="desc" type="text" maxlength="2256"/>
+            <br>
+            <br>
+            <p>Obrazek (mały)</p>
+            <input type="text" name="smallimg">
+            <br>
+            <br>
+            <p>Obrazek (duzy)</p>
+            <input type="text" name="bigimg">
+            <br>
+            <br>
+            <p>Footer:</p>
+            <input name="footer" type="text"
+                   maxlength="2256"/>
+            <br>
+            <br>
+            <p>Bot/Webhook</p>
+            <select name="type">
+                <option value="bot" selected>Bot</option>
+                <option value="webhook">Webhook</option>
+            </select>
+            <br>
+            <br>
+            <button type="submit" class="btn-invite">Wyślij</button>
+            <br> <br>
+            <code> * - Pole wymagane</code>
+            <br>
+        </form>
+    </div>
+</div>
+<%- include('partials/footer', {version: client.version}) %>
+</body>
+ 

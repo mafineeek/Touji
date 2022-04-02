@@ -1,0 +1,31 @@
+import { Language } from "../../../types";
+
+export default interface GuildConfig {
+    guildId?: number,
+    language?: Language,
+    modLogChannelID?: string,
+    birthdayChannelID?: string,
+    welcomeStatus: boolean,
+    welcomeChannelID?: string,
+    welcomeMessage?: string,
+    goodbyeStatus: boolean,
+    goodbyeChannelID?: string,
+    goodbyeMessage?: string,
+    starboardBannedUsers: Array<string>,
+    starboardStatus: boolean,
+    starboardChannelID?: string,
+    starboardStars?: number,
+    snipeEnabled: boolean,
+    ticketChannelID?: string,
+    ticketMessageID?: string,
+    ticketCategoryID?: string,
+    ticketText?: string,
+    ticketStatus: boolean,
+    joinRoleIds: Array<string>,
+    levellingEnabled: boolean,
+    levelUpdateMessage: string,
+    levelChannelID: string | null,
+    levelNeededXP: number,
+    roleRewards: Array<string>,
+    suggestionChannelID: string | null
+}

@@ -1,0 +1,122 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/imports') %>
+    <title>
+        <%- pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+</head>
+<body>
+<%- include('partials/sidebar') %>
+<%- include('partials/navbar') %>
+<% if (alert && alert.alert) { %>
+    <br>
+    <div class="alert <%= alert.alert %>" role="alert">
+        <%= alert.desc %>
+    </div>
+<% } %>
+
+<br> <br> <br>
+<div class="center div-das">
+    <h1>Witaj <%= user.username %></h1>
+    <hr>
+    <br>
+    <br>
+    <button class="btn-invite" onclick="window.location.href='/dashboard/<%= settings.id %>'">Powrót</button>
+</div>
+<br> <br> <br>
+<div class="row">
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Poziomy</h1>
+            <br>
+        </div>
+        <br>
+        <form method="POST" action="/dashboard/<%= settings.id %>/settings/leveling">
+
+            <p>Status</p>
+            <select id="status" name="status">
+                <option id="on" <%= settings.leveling.status ? `selected="selected">` : "" %>>Włączone</option>
+                <option id="off" <%= !settings.leveling.status ? `selected="selected">` : "" %>>Wyłączone</option>
+            </select>
+            <br>
+            <br>
+            <br>
+            <p>Wiadomość</p>
+            <input name="minStars" type="text" maxlength="2256" value="<%= settings.leveling.messageNewLevel %>">
+            <br>
+            <br>
+            <p>Tryb</p>
+            <select name="mode">
+                <option value="embed" <%= settings.leveling.embed ? `selected="selected">` : "" %>>Embed</option>
+                <option value="message" <%= !settings.leveling.embed ? `selected="selected">` : "" %>>Wiadomosc</option>
+            </select>
+            <br>
+            <br>
+            <button type="submit" class="btn-invite">Zapisz</button>
+            <br> <br>
+        </form>
+        <h1>Zmienne:</h1>
+        <br>
+        <p> {guild} - Nazwa serwera (Touji | Wsparcie)</p>
+        <p>{guild.members} - Ilość osób (139)</p>
+        <p>{guild.id} - ID serwera (703156079890268180)</p>
+        <p>{user} - Oznaczenie użytkownika (@Aleks1123#0001)</p>
+        <p>{user.username} - Nazwa użytkownika (Aleks1123)</p>
+        <p>{user.tag} - Tag użytkownika (Aleks1123#0001)</p>
+        <p>{user.id} - ID użytkownika (435029733344804874)</p>
+        <p>{level} - Poziom użytkownika (1)</p>
+        <p>{xp} - Exp użytkownika (500)</p>
+        <br>
+        <br>
+        <br>
+    </div>
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Role za poziom</h1>
+            <br>
+        </div>
+        <br>
+        <div class="prefixes" style="min-height: 250px; padding: 20px;">
+            <% settings.leveling.roles.forEach((item, index) => { %>
+                <form method="POST" action="/dashboard/<%= settings.id %>/settings/leveling/roles/remove">
+                    <div class="div-prefix">
+                        <p>Rola: <%= guild.roles.cache.get(item.roleid)?.name || "Nie znaleziono" %></p>
+                        <p>Poziom: <%= item.level %></p>
+                        <br>
+                        <br>
+                        <div style="display: flex; float: right; cursor: pointer; font-size: 30px; margin-top: -30px; color: red;">
+                            <input type="text" name="delrole" value="<%= index %>" style="display: none;"/>
+                            <button type="submit" id="prefix-remove<%= index %>" class="none">
+                                <i class='bx bx-trash'></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            <% }); %>
+        </div>
+        <br>
+        <form method="POST" action="/dashboard/<%= settings.id %>/settings/leveling/roles/add">
+            <p>Rola</p>
+            <select id="role" name="role">
+                <% guild.roles.cache.filter(x => guild.id !== x.id).sort((a, b) => a.position - b.position).forEach((r) => { %>
+                    <option value="<%= r.id %>"><%= r.name %></option>
+                <% }); %>
+            </select>
+            <br>
+            <br>
+            <br>
+            <p>Poziom</p>
+            <input name="level" type="text" maxlength="2256">
+            <br> <br>
+            <br>
+            <button type="submit" class="btn-invite">Dodaj</button>
+            <br> <br>
+            <br>
+        </form>
+    </div>
+</div>
+<%- include('partials/footer', {version: client.version}) %>
+</body>

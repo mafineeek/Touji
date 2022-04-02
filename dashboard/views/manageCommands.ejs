@@ -1,0 +1,42 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/imports') %>
+    <title>
+        <%- pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+</head>
+
+<body>
+<%- include('partials/sidebar') %>
+<%- include('partials/navbar') %>
+<br>
+<div class="center div-das">
+    <h1>Witaj <%= user.username %></h1>
+    <hr>
+</div>
+<br>
+<div class="center">
+    <h1 style="border-bottom: rgb(92, 92, 92) solid 1px; padding: 10px; margin-right: 20px; margin-bottom: 10px;">
+        Administracyjne</h1>
+</div>
+<form method="POST" action="/dashboard/<%= settings.id %>/settings/commands">
+    <% bot.commands.filter(x => x.help.category === "Administracyjne").forEach(command => { %>
+        <div class="rows">
+            <br>
+            <label class="toggle">
+                <input class="toggle__input myToggle" type="checkbox"
+                       name="<%= command.conf.name %>" <%= settings.disabledCommands.includes(command.conf.name) ? "" : "checked" %>>
+                <div class="toggle__fill"></div>
+            </label>
+            <h1 style="margin-left: 10px;"><%= command.conf.name %></h1>
+            <br>
+        </div>
+    <% }) %>
+    <button type="submit" class="btn-invite">Zapisz</button>
+
+</form>
+<%- include('partials/footer', {version: client.version}) %>
+</body>

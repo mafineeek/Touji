@@ -1,0 +1,29 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/imports') %>
+    <title>
+        <%- pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="bg-color">
+    <%- include('partials/navbar') %>
+    <div class="text-main">
+        <div class="text">
+            <h1>500</h1>
+            <br>
+            <p>Wystapił błąd</p>
+            <p>Zgłoszono do developerów</p>
+            <br>
+            <br>
+            <a href="/" style="margin-bottom: 30px;" class="btn-invite">Wróć</a>
+        </div>
+    </div>
+</div>
+
+
+<%- include('partials/footer', {version: bot.version}) %>
+
+</body>

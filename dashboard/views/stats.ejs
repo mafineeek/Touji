@@ -1,0 +1,168 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/imports') %>
+    <title>
+        <%- pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="center div-das">
+    <h1>Statystyki
+    </h1>
+    <hr>
+    <br>
+    <br>
+</div>
+<br> <br> <br>
+
+<div class="row">
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Serwery</h1>
+            <br>
+            <h1>
+                <%= stats.guilds %>
+            </h1>
+        </div>
+        <br>
+        <br>
+    </div>
+
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Użytkownicy</h1>
+            <br>
+            <h1>
+                <%= stats.users %>
+            </h1>
+        </div>
+        <br>
+        <br>
+    </div>
+
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Kanały</h1>
+            <br>
+            <h1>
+                <%= stats.channels %>
+            </h1>
+        </div>
+        <br>
+        <br>
+    </div>
+
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Uptime</h1>
+            <br>
+            <h1>
+                <%= stats.uptime %>
+            </h1>
+        </div>
+        <br>
+        <br>
+    </div>
+
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Ping</h1>
+            <br>
+            <h1>
+                <%= stats.ping %>
+            </h1>
+        </div>
+        <br>
+        <br>
+    </div>
+
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Liczba shardów</h1>
+            <br>
+            <h1>
+                <%= stats.shards %>
+            </h1>
+        </div>
+        <br>
+        <br>
+    </div>
+
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Wersja DiscordJS</h1>
+            <br>
+            <h1>
+                v<%= stats.djs %>
+            </h1>
+        </div>
+        <br>
+        <br>
+    </div>
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Wersja NodeJS</h1>
+            <br>
+            <h1>
+                <%= process.version %>
+            </h1>
+        </div>
+        <br>
+        <br>
+    </div>
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Ram</h1>
+            <br>
+            <h1>
+                <%= stats.ram %>
+            </h1>
+        </div>
+        <br>
+        <br>
+    </div>
+
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>System</h1>
+            <br>
+            <h1>
+                <%= stats.system %>
+            </h1>
+        </div>
+        <br>
+        <br>
+    </div>
+
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Arch</h1>
+            <br>
+            <h1>
+                <%= stats.arch %>
+            </h1>
+        </div>
+        <br>
+        <br>
+    </div>
+
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Procesor</h1>
+            <br>
+            <h1>
+                <%= stats.procesor %>
+            </h1>
+        </div>
+        <br>
+        <br>
+    </div>
+
+</div>
+
+<%- include('partials/footer', {version: client.version}) %>
+
+</body>

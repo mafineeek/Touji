@@ -1,0 +1,73 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/imports') %>
+    <title>
+        <%- pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+</head>
+<body>
+<%- include('partials/sidebar') %>
+<%- include('partials/navbar') %>
+<% if (alert && alert.alert) { %>
+    <br>
+    <div class="alert <%= alert.alert %>" role="alert">
+        <%= alert.desc %>
+    </div>
+<% } %>
+
+<br> <br> <br>
+<div class="center div-das">
+    <h1>Witaj <%= user.username %></h1>
+    <hr>
+    <br>
+    <br>
+    <button class="btn-invite" onclick="window.location.href='/dashboard/<%= settings.id %>'">Powrót</button>
+</div>
+<br> <br> <br>
+<div class="row">
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Zarządzaj Autoresponderami</h1>
+            <br>
+            <p>Zapisane Autorespondery</p>
+        </div>
+        <br>
+        <div class="prefixes" style="min-height: 250px; padding: 20px;">
+            <% autoresponders.forEach((item) => { %>
+                <form method="POST" action="/dashboard/<%= settings.id %>/settings/autoresponders/remove">
+                    <div class="div-prefix">
+                        <p>Wiadomość: <%= item.msg %></p>
+                        <p>Odpowiedź: <%= item.reply %></p>
+                        <br>
+                        <br>
+                        <input type="text" name="delautoresponder" value="<%= item.arid %>" style="display: none;"/>
+                        <div style="display: flex; float: right; cursor: pointer; font-size: 30px; margin-top: -30px; color: red;">
+                            <button type="submit" id="prefix-remove<%= item.arid %>" class="none">
+                                <i class='bx bx-trash'></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            <% }); %>
+        </div>
+        <br>
+        <form method="POST" action="/dashboard/<%= settings.id %>/settings/autoresponders/add">
+            <p>Dodaj autoresponder</p>
+            <input type="text" id="prefix" name="msg" placeholder="Twoja wiadomość">
+            <br>
+            <br>
+            <input type="text" id="prefix" name="reply" placeholder="Twoja odpowiedź">
+            <br>
+            <br>
+            <br>
+            <button class="btn-invite">Dodaj</button>
+            <br> <br>
+            <br>
+        </form>
+    </div>
+</div>
+<%- include('partials/footer', {version: client.version}) %>
+</body>

@@ -1,0 +1,151 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/imports') %>
+    <title>
+        <%- pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+</head>
+
+<body>
+
+<%- include('partials/sidebar') %>
+<%- include('partials/navbar') %>
+<br>
+
+<div class="center div-das">
+    <br>
+    <br>
+    <br>
+    <h1>Witaj <%= user.username %></h1>
+    <p>Wybierz co chcesz zrobić!
+    <hr>
+</div>
+
+<div class="row">
+    <div class="card-guilds">
+        <br>
+        <h1>Ogólnie</h1>
+        <p>prefix, modlog, rola muted</p>
+        <br>
+        <a href="/dashboard/<%= guild.id %>/settings/main" class="btn-invite">Przejdź</a>
+        <br> <br>
+    </div>
+
+    <div class="card-guilds">
+        <br>
+        <h1>Powitania</h1>
+        <p>Ustawienia powitań</p>
+        <br>
+        <a href="/dashboard/<%= guild.id %>/settings/welcome" class="btn-invite">Przejdź</a>
+        <br> <br>
+    </div>
+
+    <div class="card-guilds">
+        <br>
+        <h1>Pożegnania</h1>
+        <p>Ustawienia pożegnań</p>
+        <br>
+        <a href="/dashboard/<%= guild.id %>/settings/goodbye" class="btn-invite">Przejdź</a>
+        <br> <br>
+    </div>
+
+    <div class="card-guilds">
+        <br>
+        <h1>Propozycje</h1>
+        <p>Zarzadzaj propozycjami</p>
+        <br>
+        <a href="/dashboard/<%= guild.id %>/settings/proposals" class="btn-invite">Przejdź</a>
+        <br> <br>
+    </div>
+
+    <div class="card-guilds">
+        <br>
+        <h1>Embed Sender</h1>
+        <p>Wyślij wiadomość embed</p>
+        <br>
+        <a href="/dashboard/<%= guild.id %>/settings/embed" class="btn-invite">Przejdź</a>
+        <br> <br>
+    </div>
+
+    <div class="card-guilds">
+        <br>
+        <h1>Starboard</h1>
+        <p>Ustawienia starboardu</p>
+        <br>
+        <a href="/dashboard/<%= guild.id %>/settings/starboard" class="btn-invite">Przejdź</a>
+        <br> <br>
+    </div>
+
+    <div class="card-guilds">
+        <br>
+        <h1>Kolory</h1>
+        <p>Zarzadzaj kolorami</p>
+        <br>
+        <a href="/dashboard/<%= guild.id %>/settings/colors" class="btn-invite">Przejdź</a>
+        <br> <br>
+    </div>
+
+    <div class="card-guilds">
+        <br>
+        <h1>Poziomy</h1>
+        <p>Ustawienia poziomów</p>
+        <br>
+        <a href="/dashboard/<%= guild.id %>/settings/leveling" class="btn-invite">Przejdź</a>
+        <br> <br>
+    </div>
+
+    <div class="card-guilds">
+        <br>
+        <h1>Antyinvite</h1>
+        <p>Ustawienia antyinvite</p>
+        <br>
+        <a href="/dashboard/<%= guild.id %>/settings/antyinvite" class="btn-invite">Przejdź</a>
+        <br> <br>
+    </div>
+
+    <div class="card-guilds">
+        <br>
+        <h1>Autorespondery</h1>
+        <p>Zarzadzaj autoresponderami</p>
+        <br>
+        <a href="/dashboard/<%= guild.id %>/settings/autoresponders" class="btn-invite">Przejdź</a>
+        <br> <br>
+    </div>
+
+    <div class="card-guilds">
+        <br>
+        <h1>Permisje</h1>
+        <p>Zarządzaj permisjami</p>
+        <br>
+        <a href="/dashboard/<%= guild.id %>/settings/permissions" class="btn-invite">Przejdź</a>
+        <br> <br>
+    </div>
+
+    <div class="card-guilds">
+        <br>
+        <div class="row">
+            <h1>Logi</h1>
+            <p style="background-color: orange; text-align: center; margin-left: 7px; height: 30px; width: 80px; ">
+                Nowość</p>
+        </div>
+        <p>Zarządzaj logami</p>
+        <br>
+        <a href="/dashboard/<%= guild.id %>/settings/logs" class="btn-invite">Przejdź</a>
+        <br> <br>
+    </div>
+
+    <!--    <div class="card-guilds">-->
+    <!--        <br>-->
+    <!--        <h1>Komendy</h1>-->
+    <!--        <p>Zarządzaj komendami</p>-->
+    <!--        <br>-->
+    <!--        <a href="/dashboard/<%= guild.id %>/settings/commands" class="btn-invite">Przejdź</a>-->
+    <!--        <br> <br>-->
+    <!--    </div>-->
+</div>
+
+<%- include('partials/footer', {version: client.version}) %>
+</body>

@@ -1,0 +1,84 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/imports') %>
+    <title>
+        <%- pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+</head>
+<body>
+<%- include('partials/sidebar') %>
+<%- include('partials/navbar') %>
+<% if (alert && alert.alert) { %>
+    <br>
+    <div class="alert <%= alert.alert %>" role="alert">
+        <%= alert.desc %>
+    </div>
+<% } %>
+<div class="center div-das">
+    <h1>Witaj <%= user.username %></h1>
+    <hr>
+    <br>
+    <br>
+    <button class="btn-invite" onclick="window.location.href='/dashboard/<%= settings.id %>'">Powrót</button>
+</div>
+
+<div class="row">
+
+    <div class="card-guilds">
+        <div class="blure">
+            <h1>Uprawnienia</h1>
+        </div>
+        <br>
+        <p>Lista uprawnień</p>
+        <div class="prefixes" style="min-height: 250px; padding: 20px;">
+            <% settings.permissions.roles.forEach((item, index) => { %>
+                <form method="POST" action="/dashboard/<%= settings.id %>/settings/permissions/roles/remove">
+                    <div class="div-prefix">
+                        <p>Rola: <%= guild.roles.cache.get(item.role)?.name || "Nie znaleziono" %></p>
+                        <p>Permisja: <%= item.permission %></p>
+                        <br>
+                        <br>
+                        
+                        <input type="text" name="delperm" value="<%= index %>" style="display: none;"/>
+                        <div style="display: flex; float: right; cursor: pointer; font-size: 30px; margin-top: -30px; color: red;">
+                            <button type="submit" id="perm-remove<%= index %>" class="none">
+                                <i class='bx bx-trash'></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            <% }); %>
+        </div>
+        <form method="POST" action="/dashboard/<%= settings.id %>/settings/permissions/roles/add">
+            <br>
+            <br>
+            <h1>Dodaj uprawnienia</h1>
+            <br>
+            <p>Rola</p>
+            <select id="role" name="role">
+                <% guild.roles.cache.filter((r) => r.id !== guild.id).sort((a, b) => a.position - b.position).array().reverse().forEach((r) => { %>
+                    <option value="<%= r.id %>"><%= r.name %></option>
+                <% }); %>
+            </select>
+            <br>
+            <br>
+            <p>Permisja</p>
+            <select id="perm" name="permission">
+                <option>Administrator</option>
+                <option>Moderator</option>
+                <option>Pomocnik</option>
+            </select>
+            <br> <br> <br>
+            <button type="submit" class="btn-invite">Dodaj</button>
+            <br> <br>
+        </form>
+    </div>
+
+</div>
+<%- include('partials/footer', {version: client.version}) %>
+
+</body>
+ 

@@ -1,0 +1,42 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/imports') %>
+    <title>
+        <%- pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<%- include('partials/navbar') %>
+<div class="levels center" style="margin-top: 110px; font-weight: 400;">
+    <h1></h1>
+</div>
+<% let i = 0;
+leveling.forEach(lvl => {
+    i++;
+    const user = bot.users.cache.get(lvl.userid);
+    if (!user) return;
+%>
+<div class="row">
+    <div class="topka-div">
+
+        <img src="<%= user.displayAvatarURL({format: "png"}) %>"
+             class="topka-img">
+             <br>
+             <h3><%= i %>. miejsce</h3>
+        <code>
+            <%= user.tag %>
+        </code>
+        <% if(req.user && guild.members.cache.get(req.user.id).hasPermission('MANAGE_GUILD')){ %>
+        <a href="/api/leveling/resetlevel/<%=guild.id%>/<%= user.id %>" type="submit" class="btn-admin">
+            <i class='bx bx-trash'></i>
+        </a>
+        <%}%>
+    </div>
+    <% }) %>
+</div>
+
+<%- include('partials/footer', {version: client.version}) %>
+
+</body>

@@ -1,0 +1,67 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/imports') %>
+    <title>
+        <%- pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+</head>
+<body>
+<%- include('partials/sidebar') %>
+<%- include('partials/navbar') %>
+<% if (alert && alert.alert) { %>
+    <br>
+    <div class="alert <%= alert.alert %>" role="alert">
+        <%= alert.desc %>
+    </div>
+<% } %>
+
+<br> <br> <br>
+<div class="center div-das">
+    <h1>Witaj <%= user.username %></h1>
+    <hr>
+    <br>
+    <br>
+    <button class="btn-invite" onclick="window.location.href='/dashboard/<%= settings.id %>'">Powrót</button>
+</div>
+<br> <br> <br>
+<form method="POST">
+    <div class="row">
+        <div class="card-guilds">
+            <div class="blure">
+                <h1>Kolory</h1>
+                <br>
+            </div>
+            <br>
+            <p>Kolor błędu</p>
+            <br>
+            <br>
+            <input type="color" id="head" name="error"
+                   value="<%= settings.colors.error %>">
+            <br>
+            <br>
+            <br>
+            <p>Kolor ostrzeżenia</p>
+            <br>
+            <br>
+            <input type="color" id="head" name="warn"
+                   value="<%= settings.colors.warn %>">
+            <br>
+            <br>
+            <br>
+            <p>Kolor sukcesu</p>
+            <br>
+            <input type="color" id="head" name="done"
+                   value="<%= settings.colors.done %>">
+            <br>
+            <br>
+            <br>
+            <button type="submit" class="btn-invite">Zapisz</button>
+            <br> <br>
+        </div>
+    </div>
+</form>
+<%- include('partials/footer', {version: client.version}) %>
+</body>
