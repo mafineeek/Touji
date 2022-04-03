@@ -49,7 +49,7 @@ export default class Command implements BaseCommand {
               .addComponents(
                   new MessageButton()
                   .setStyle('LINK')
-                  .setURL(`https://touji.xyz/leaderboard/${interaction.guildId}`)
+                  .setURL(`https://toujibot.com/leaderboard/${interaction.guildId}`)
                   .setLabel(`Visit the leaderboard`)
               )
           ]
