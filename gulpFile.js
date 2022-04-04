@@ -19,21 +19,16 @@ gulp.task("views", function () {
 });
 
 // Task which would just create a copy of the current static assets directory in dist directory
-gulp.task("imgs", function () {
+gulp.task("assets", function () {
   return gulp
-    .src("./dashboard/public/img/*")
-    .pipe(gulp.dest("./dist/dashboarrd/public/img/"));
-});
-gulp.task("css", function () {
-  return gulp
-    .src("./dashboard/public/css/*")
-    .pipe(gulp.dest("./dist/dashboarrd/public/css/"));
+    .src("./dashboard/public/**/*")
+    .pipe(gulp.dest("./dist/dashboard/public/"));
 });
 
 // The default task which runs at start of the gulpfile.js
 gulp.task(
   "default",
-  gulp.series("build-clean", "typescript", "views", "imgs", "css"),
+  gulp.series("build-clean", "typescript", "views", "assets"),
   () => {
     console.log("Done");
   }
