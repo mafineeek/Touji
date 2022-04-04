@@ -2,6 +2,7 @@ import { r } from "rethinkdb-ts";
 import Bot from "../Bot";
 
 export default function loadReminders(client: Bot) {
+    r.table("reminders").indexWait().run(client.database.connection);
     setInterval(async () => {
         for (const reminder of await r.table("reminders").between(
             [r.minval], [Date.now()], { index: "getAll" }
