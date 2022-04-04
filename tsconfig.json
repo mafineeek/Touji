@@ -11,6 +11,8 @@
       "./node_modules/@types",
       "./types"
     ],
+    "outDir": "./dist",
+    "allowJs": true,
     "moduleResolution": "node"
   },
   "exclude": ["node_modules"]
