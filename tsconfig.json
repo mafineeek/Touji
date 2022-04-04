@@ -12,6 +12,7 @@
       "./node_modules/@types",
       "./types"
     ],
+    "moduleResolution": "node"
   },
   "exclude": ["node_modules"]
 }

@@ -173,7 +173,7 @@ export default class LanguageHandler {
     }
 
     public raw() {
-        const { default: data } = require(`../../data/language/${this.language}.ts`);
+        const { default: data } = require(`../../data/language/${this.language}`);
         return data
     }
 
