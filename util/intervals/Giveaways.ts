@@ -8,5 +8,5 @@ export default function loadGiveaways(client: Bot) {
         ).filter({ ended: false }).run(client.database.connection)) {
             client.database.giveaways.reroll(giveaway)
         }
-    }, 5000)
+    }, 10000)
 }

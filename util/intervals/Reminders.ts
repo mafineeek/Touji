@@ -12,5 +12,5 @@ export default function loadReminders(client: Bot) {
             await user.send({ content: `>>> <:timer:863336720560291841> **#${reminder.id}**\n\n${reminder.content}` });
             await client.database.reminders.remove(reminder.id);
         }
-    }, 5000)
+    }, 10000)
 }

@@ -12,5 +12,5 @@ export default function loadTempbans(client: Bot) {
             guild.members.unban(tempban.userID, "Tempban end").catch(() => false);
             client.database.case.remove(tempban.caseID)
         }
-    }, 5000)
+    }, 10000)
 }
