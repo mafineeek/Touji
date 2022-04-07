@@ -26,6 +26,8 @@ export default interface GuildConfig {
     levelUpdateMessage: string,
     levelChannelID: string | null,
     levelNeededXP: number,
+    levelIgnoreChannels: Array<string | null>,
     roleRewards: Array<string>,
-    suggestionChannelID: string | null
+    suggestionChannelID: string | null,
+    ghostpingAlert: boolean,
 }

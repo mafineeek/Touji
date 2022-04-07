@@ -17,7 +17,7 @@ export interface SenderOptions {
 export default class Sender {
     public constructor(
         private channel: NonDMChannel<false>,
-        private language: Language
+        private language: Language = 'en'
     ) { }
 
     public setLanguage(language: Language) {

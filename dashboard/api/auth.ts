@@ -30,5 +30,5 @@ export default async (app: any) => {
 
   app.use(passport.initialize());
   app.use(passport.session());
-  app.passport = passport;
+  app.set("passport", passport);
 };

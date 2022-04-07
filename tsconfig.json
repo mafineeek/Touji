@@ -14,7 +14,8 @@
     "outDir": "./dist",
     "allowJs": true,
     "moduleResolution": "node",
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "resolveJsonModule": true
   },
   "exclude": ["node_modules"]
 }

@@ -10,6 +10,8 @@ import Config from "../data/Config";
 import Helpers from "./Helpers"
 import { REST } from "@discordjs/rest"
 import { Routes, ApplicationCommandType } from 'discord-api-types/v9'
+import {version} from '../package.json';
+import { WebhookClient } from "discord.js";
 
 export default class Bot extends Client {
     public commands = new Collection<string, Command>();
@@ -17,8 +19,9 @@ export default class Bot extends Client {
     public logger = new Logger();
     public database: Database = null!;
     public helpers: typeof Helpers = Helpers;
-    public version: string = "0.3.8";
+    public version: string = version;
     private restHandler: any;
+    public errorWebhook: WebhookClient = new WebhookClient({url: Config.ERROR_WEBHOOKS[0]})
     public constructor(options: ClientOptions) {
         super(options);
         this.logger.success("Client created.")
@@ -91,7 +94,7 @@ export default class Bot extends Client {
             .put(
               Routes.applicationGuildCommands(
                 <string>this.user?.id,
-                Config.CONSTANTS.supportServerID
+                Config.CONSTANTS.developerServerID
               ),
               { body: commands }
             )

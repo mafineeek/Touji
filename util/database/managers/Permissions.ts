@@ -170,7 +170,7 @@ export default class PEXManager {
             return row("id").eq(pex).or(row("id").eq(`-${pex}`))
         }).run(this.connection))[0];
 
-        return Config.PERMISSIONS.developer.includes(userID) ? true : typeof response === "undefined" ? undefined : (!(response?.id === `-${pex}`) || response?.id === pex);
+        return Config.PERMISSIONS.developer.includes(userID) ? true : false
     }
 
     private async hasInGroup(userID: string, guildId: string, pex: string): Promise<boolean | undefined> {

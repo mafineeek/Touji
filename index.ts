@@ -13,4 +13,10 @@ const bot = new Bot({
     partials: ['USER', 'REACTION', 'MESSAGE']
 })
 bot.setup()
+process.on("unhandledRejection", (error: Error) => {
+  bot.errorWebhook.send(`Unhandled Rejection: \`\`\`\n${error}\n${error.stack}\n\`\`\``)
+});
+bot.on('error', (error) => {
+    bot.errorWebhook.send(`Error: ${error}`)
+})
 export const client = bot;

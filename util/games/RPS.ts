@@ -39,7 +39,7 @@ export default async function createRPS(interaction: CommandInteraction, opponen
     const sender = new Sender(interaction.channel, interaction.guild!.config.language!);
     const filter = (i: ButtonInteraction) => { return ["rock", "paper", "scissors"].includes(i.customId) }
 
-    const baseMessage = <Message>await interaction[interaction.replied ? "editReply" : "reply"]({
+    const baseMessage = <Message>await interaction.editReply({
         embeds: [sender.success(LanguageHandler.get(
             "DATA_COMMANDS_RPS_MOVE",
             [{ old: "user", new: interaction.user.toString() }],
@@ -50,7 +50,6 @@ export default async function createRPS(interaction: CommandInteraction, opponen
             new MessageButton().setStyle("DANGER").setCustomId("paper").setEmoji("📰"),
             new MessageButton().setStyle("DANGER").setCustomId("scissors").setEmoji("✂")
         ])],
-        fetchReply: true
     });
 
     const collector = baseMessage.createMessageComponentCollector({ filter, time: 90000, componentType: 'BUTTON' });

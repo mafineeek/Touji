@@ -212,6 +212,7 @@ export default {
         birthdaysChannel: "Birthday channel",
         welcomeStatus: "Welcome module status",
         welcomeChannel: "Welcome channel",
+        noLevellingChannel: "{{action}} {{channel}} as no levelling channel",
         welcomeMessage: "Welcome message",
         language: "Language",
         invalidWelcomeMessage:
@@ -819,6 +820,12 @@ export default {
       },
       levellingStatus: {
         desc: "Levelling status",
+      },
+      levellingBlockedChannel:{
+        desc: 'Add/remove channels where you cant earn XP.',
+      },
+      ghostPing: {
+        desc: "Anty Ghostping",
       },
       levellingChannel: {
         desc: "Levelling channel",

@@ -28,7 +28,7 @@ export default async (app: any) => {
         return res.redirect("/dashboard");
 
       res.render("manage", {
-        pageTitle: "Touji | Panel Serwera",
+        pageTitle: "Touji | Manage",
         user: req.user,
         member: member,
         guild: guild,

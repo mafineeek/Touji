@@ -22,9 +22,10 @@ export default class Config {
   static CONSTANTS = {
     supportServerID: "831509637999493121",
     developerRoleID: "958455859799797770",
+    developerServerID: "941643779830612028",
   };
   static PERMISSIONS = {
-    developer: ["831474539053449227"],
+    developer: ["831474539053449227", "854342480019587133"],
   };
   static KEYS = {
     alexFlipnote: "5F5m6DVpbToTW_opFsxcnT89GDc8KgqYOQ1gwiCS",
@@ -34,12 +35,15 @@ export default class Config {
     BETA: {
       clientID: "958455026907496529",
       clientSecret: "zFWV5gofv0dR0fwxaM2yZX2CAf3dO0Bi",
-      redirect: 'http://localhost:3000/dashboard/api/auth/callback',
+      redirect: "http://localhost:3000/dashboard/api/auth/callback",
     },
     STABLE: {
-      clientID: '959561376420991037',
-      clientSecret: 'gUHZUPlW2HXmH1pEtM_5k0bNI-XcJvyK',
-      redirect: 'https://toujibot.com/dashboard/api/auth/callback',
-    }
+      clientID: "959561376420991037",
+      clientSecret: "gUHZUPlW2HXmH1pEtM_5k0bNI-XcJvyK",
+      redirect: "https://toujibot.com/dashboard/api/auth/callback",
+    },
   };
+  static ERROR_WEBHOOKS = [
+    "https://canary.discord.com/api/webhooks/961665455909638176/Ld_JAWK6HVhDmcg6O9oNcqM90ElKcxd48plzxg8rvl_x2m9fiPkNQRVctTSEnZopeMY-",
+  ];
 }

@@ -34,12 +34,7 @@ export default class Event implements BaseEvent {
             }
 
             if (
-              required.length &&
-              !(await client.database.permissions.has(
-                interaction.user.id,
-                interaction.guildId!,
-                '*'
-              ))
+              required.length
             )
               return await interaction.followUp({
                 embeds: [

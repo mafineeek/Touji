@@ -207,6 +207,11 @@ export default class Command implements BaseCommand {
         },
         {
           type: 1,
+          name: 'ghostping_alert',
+          description: lang.setLanguage("en").get("OPT_CONFIG_GHOSTPING_DESC"),
+        },
+        {
+          type: 1,
           name: "starboard_stars",
           description: lang
             .setLanguage("en")
@@ -301,6 +306,20 @@ export default class Command implements BaseCommand {
         },
         {
           type: 1,
+          name: "levelling_blocked_channel",
+          description: lang
+            .setLanguage("en")
+            .get("OPT_CONFIG_LEVELLINGBLOCKEDCHANNEL_DESC"),
+          options: [
+            {
+              type: 7,
+              name: "channel",
+              description: 'Configure channels where XP can not be earned',
+            },
+          ],
+        },
+        {
+          type: 1,
           name: "suggestions_channel",
           description: lang
             .setLanguage("en")
@@ -345,6 +364,26 @@ export default class Command implements BaseCommand {
     ) {
       case "modify": {
         switch (interaction.options.getSubcommand(false)) {
+
+          case "ghostping_alert": {
+            const data = await client.database.guildConfig.get(interaction.guildId);
+            await client.database.guildConfig.set(interaction.guildId, {
+              ghostpingAlert: !data.ghostpingAlert,
+            });
+            await interaction.followUp({
+              embeds: [
+                sender.success(lang.get('DATA_COMMANDS_CONFIG_UPDATEDSTATUS', [
+                  {
+                    old: 'changed',
+                    new: data.ghostping_alert ? 'Disabled' : 'Enabled',
+                  }
+                ]
+                ))
+              ]
+            })
+            break;
+          }
+
           case "language": {
             const language = interaction.options.getString("language")!;
             if (guildConfig?.language === language)
@@ -433,6 +472,46 @@ export default class Command implements BaseCommand {
                 ),
               ],
             });
+            break;
+          }
+          case "levelling_blocked_channel": {
+            const channel = interaction.options.getChannel("channel");
+            if (
+              channel &&
+              !["GUILD_TEXT", "GUILD_NEWS"].includes(channel?.type!)
+            )
+              return await interaction.followUp({
+                embeds: [
+                  sender.error(lang.get("DATA_COMMANDS_CONFIG_INVALIDCHANNEL")),
+                ],
+              });
+              let data = await client.database.guildConfig.get(interaction.guild!.id)
+              data.levelIgnoreChannels = data.levelIgnoreChannels ?? []
+              await interaction.followUp({
+                embeds: [
+                  sender.success(
+                    lang.get("DATA_COMMANDS_CONFIG_NOLEVELLINGCHANNEL", [
+                      {
+                        old: "action",
+                        new: data.levelIgnoreChannels.includes(channel?.id) ? "Removed" : "Added",
+                      },
+                      { old: "channel", new: channel?.toString() || "N/A" },
+                    ])
+                  ),
+                ],
+              });
+              if(data.levelIgnoreChannels?.includes(channel?.id)) {
+                await client.database.guildConfig.set(interaction.guild!.id, {
+                  levelIgnoreChannels: (data.levelIgnoreChannels||[]).filter(
+                    (c) => c !== channel?.id
+                  ),
+                });
+              }else{
+                (data.levelIgnoreChannels || []).push(channel?.id)
+                await client.database.guildConfig.set(interaction.guild!.id, {
+                  levelIgnoreChannels: data.levelIgnoreChannels,
+                })
+              }
             break;
           }
           case "levelling_channel": {

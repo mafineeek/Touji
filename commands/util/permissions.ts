@@ -218,12 +218,23 @@ export default class Command implements BaseCommand {
 
         switch (interaction.options.getSubcommandGroup()) {
             case "global": {
-                if (!await client.database.permissions.has(interaction.user.id, interaction.guildId!, "commands.util.permissions.global")) return await interaction.followUp({
-                    embeds: [sender.permissionError(
-                        ["commands.util.permissions.global"],
-                        lang.get("DATA_COMMANDS_PERMISSIONS_NOGLOBALPERMISSIONS")
-                    )]
-                })
+                if (
+                  !(await client.database.permissions.has(
+                    interaction.user.id,
+                    interaction.guildId!,
+                    "global.access"
+                  ))
+                )
+                  return await interaction.followUp({
+                    embeds: [
+                      sender.permissionError(
+                        ["global.access"],
+                        lang.get(
+                          "DATA_COMMANDS_PERMISSIONS_NOGLOBALPERMISSIONS"
+                        )
+                      ),
+                    ],
+                  });
 
                 switch (interaction.options.getSubcommand()) {
                     case "add-permission": {

@@ -56,7 +56,7 @@ export default class Event implements BaseEvent {
             }
         }
 
-        if (guildConfig.levellingEnabled && message.channel.id !== guildConfig.suggestionChannelID) {
+        if (guildConfig.levellingEnabled && message.channel.id !== guildConfig.suggestionChannelID && !guildConfig.levelIgnoreChannels.includes(message.channelId)) {
             await client.database.levelling.giveXp(message.author.id, message.guild.id);
 
             const userData = await client.database.levelling.getUser(message.author.id, message.guild.id);
