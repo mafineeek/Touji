@@ -220,6 +220,7 @@ export default {
         goodbyeStatus: "Goodbye module status",
         goodbyeChannel: "Goodbye channel",
         goodbyeMessage: "Goodbye message",
+        updatedStatus: "Updated status to {{status}}",
         invalidGoodbyeMessage:
           "Goodbye message cannot contains more than 300 characters",
         variables:

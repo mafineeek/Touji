@@ -372,13 +372,7 @@ export default class Command implements BaseCommand {
             });
             await interaction.followUp({
               embeds: [
-                sender.success(lang.get('DATA_COMMANDS_CONFIG_UPDATEDSTATUS', [
-                  {
-                    old: 'changed',
-                    new: data.ghostping_alert ? 'Disabled' : 'Enabled',
-                  }
-                ]
-                ))
+                sender.success('Updated!')
               ]
             })
             break;
