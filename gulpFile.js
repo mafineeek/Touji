@@ -25,10 +25,16 @@ gulp.task("assets", function () {
     .pipe(gulp.dest("./dist/dashboard/public/"));
 });
 
+gulp.task(
+  "locales", () => {
+    return gulp.src('./data/language/**/*.json').pipe(gulp.dest('./dist/data/language/'));
+  }
+)
+
 // The default task which runs at start of the gulpfile.js
 gulp.task(
   "default",
-  gulp.series("build-clean", "typescript", "views", "assets"),
+  gulp.series("build-clean", "typescript", "views", "assets", "locales"),
   () => {
     console.log("Done");
   }
