@@ -548,6 +548,19 @@ input[type=color], select, textarea {
     max-width: 93%;
 }
 
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 76%;
+}
+
+td, th {
+  border: 3px solid #7289da;
+  text-align: left;
+  padding: 8px;
+}
+
+
 .topka-div p {
     font-size: 20px;
 }

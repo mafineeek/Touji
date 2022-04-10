@@ -1,0 +1,33 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%- include('partials/imports') %>
+  <title><%- pageTitle %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <%- include('partials/navbar') %>
+  <div class="levels center" style="margin-top: 110px; font-weight: 400">
+    <h1></h1>
+  </div>
+  <center>
+    <table>
+      <tr>
+          <th>Category</th>
+        <th>Command name</th>
+        <th>Description</th>
+        <th>Required PEX</th>
+      </tr>
+
+      <% bot.commands.forEach((command) => { %> <% if(command.category == 'dev')
+      return %>
+      <tr>
+          <th><%= command.category%></th>
+        <td><%- command.name %></td>
+        <td><%= command.description.en || "Failed to sync"%></td>
+        <td><%- command.pexes.join(', ') %></td>
+      </tr>
+      <%})%>
+    </table>
+  </center>
+</body>
