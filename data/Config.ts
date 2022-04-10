@@ -1,5 +1,5 @@
 export default class Config {
-  static BETA = true;
+  static BETA = false;
   static BETA_TOKEN =
     "OTU4NDU1MDI2OTA3NDk2NTI5.YkNkzQ.lmjWvywUAU8HIW44xKO8yJvghp0";
   static TOKEN = "OTU5NTYxMzc2NDIwOTkxMDM3.YkdrKw.eAJCBc9uq_aeepJYA4EMJ5HEPA0";
@@ -22,7 +22,7 @@ export default class Config {
   static CONSTANTS = {
     supportServerID: "831509637999493121",
     developerRoleID: "958455859799797770",
-    developerServerID: "862738841165496341" //"941643779830612028",
+    developerServerID: "941643779830612028",
   };
   static PERMISSIONS = {
     developer: ["831474539053449227", "854342480019587133"],
