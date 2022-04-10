@@ -8,7 +8,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "lotto";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.economy.lotto" ];
+    public readonly pexes = [  "commands.economy.lotto" ];
     public readonly options = Array.fill(6, (i: number) => i).map((i: number) => {
         return {
             type: 10,

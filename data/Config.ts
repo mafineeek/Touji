@@ -1,5 +1,5 @@
 export default class Config {
-  static BETA = false;
+  static BETA = true;
   static BETA_TOKEN =
     "OTU4NDU1MDI2OTA3NDk2NTI5.YkNkzQ.lmjWvywUAU8HIW44xKO8yJvghp0";
   static TOKEN = "OTU5NTYxMzc2NDIwOTkxMDM3.YkdrKw.eAJCBc9uq_aeepJYA4EMJ5HEPA0";
@@ -22,7 +22,7 @@ export default class Config {
   static CONSTANTS = {
     supportServerID: "831509637999493121",
     developerRoleID: "958455859799797770",
-    developerServerID: "941643779830612028",
+    developerServerID: "862738841165496341" //"941643779830612028",
   };
   static PERMISSIONS = {
     developer: ["831474539053449227", "854342480019587133"],
@@ -35,12 +35,12 @@ export default class Config {
     BETA: {
       clientID: "958455026907496529",
       clientSecret: "zFWV5gofv0dR0fwxaM2yZX2CAf3dO0Bi",
-      redirect: "http://localhost:3000/dashboard/api/auth/callback",
+      redirect: "http://localhost:3000/auth-callback",
     },
     STABLE: {
       clientID: "959561376420991037",
       clientSecret: "gUHZUPlW2HXmH1pEtM_5k0bNI-XcJvyK",
-      redirect: "https://toujibot.com/dashboard/api/auth/callback",
+      redirect: "https://toujibot.com/auth-callback",
     },
   };
   static ERROR_WEBHOOKS = [

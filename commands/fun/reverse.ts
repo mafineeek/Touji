@@ -7,7 +7,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "reverse";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.fun.reverse" ];
+    public readonly pexes = [  "commands.fun.reverse" ];
     public readonly options = [{
         type: 3,
         name: "text",

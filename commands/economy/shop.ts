@@ -10,7 +10,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "shop";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.economy.shop" ];
+    public readonly pexes = [  "commands.economy.shop" ];
     public readonly usage = lang.getStatic(`USAGE_${this.name.split("-").join("").toUpperCase()}`);
     public readonly category = "economy";
     public async run(interaction: CommandInteraction, guildConfig: GuildConfig) {

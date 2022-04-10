@@ -10,7 +10,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "role-rewards";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.levelling.rolerewards" ];
+    public readonly pexes = [  "commands.levelling.rolerewards" ];
     public readonly options = [
         {
             type: 1,

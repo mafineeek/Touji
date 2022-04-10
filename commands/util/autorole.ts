@@ -9,7 +9,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "autorole";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.util.autorole" ];
+    public readonly pexes = [  "commands.util.autorole" ];
     public readonly options = [
         {
             type: 1,

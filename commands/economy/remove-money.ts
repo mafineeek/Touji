@@ -8,7 +8,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "remove-money";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.economy.removemoney" ];
+    public readonly pexes = [  "commands.economy.removemoney" ];
     public readonly options = [{
         type: 6,
         name: "user",

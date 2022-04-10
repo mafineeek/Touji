@@ -8,7 +8,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "supreme";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.fun.supreme" ];
+    public readonly pexes = [  "commands.fun.supreme" ];
     public readonly options = [{
         type: 3,
         name: "text",

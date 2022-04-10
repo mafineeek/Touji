@@ -11,7 +11,7 @@ export default class Command implements BaseCommand {
   public readonly description = lang.getStatic(
     `DESC_${this.name.split("-").join("").toUpperCase()}`
   );
-  public readonly pexes = ["global.access", "commands.games.rps"];
+  public readonly pexes = [ "commands.games.rps"];
   public readonly options = [
     {
       type: 6,

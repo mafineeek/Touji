@@ -11,7 +11,7 @@ export const specialCodes: any = {
 export default class Command implements BaseCommand {
     public readonly name = "emojify";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.fun.emojify" ];
+    public readonly pexes = [  "commands.fun.emojify" ];
     public readonly options = [{
         type: 3,
         name: "text",

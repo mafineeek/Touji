@@ -14,7 +14,7 @@ import { WebhookClient } from "discord.js";
 
 export default class Bot extends Client {
     public commands = new Collection<string, Command>();
-    public pexes: string[] = [];
+    public pexes: string[] = ["global.access.admin"];
     public logger = new Logger();
     public database: Database = null!;
     public helpers: typeof Helpers = Helpers;

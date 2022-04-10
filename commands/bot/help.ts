@@ -15,7 +15,7 @@ export default class Command implements BaseCommand {
         name: "command",
         description: lang.setLanguage("en").get("OPT_HELP_COMMAND_DESC")
     }];
-    public readonly pexes = [ "global.access", "commands.bot.help" ];
+    public readonly pexes = [  "commands.bot.help" ];
     public readonly category = "bot";
     public async run(interaction: CommandInteraction, guildConfig: GuildConfig) {
         const sender = new Sender(interaction.channel, guildConfig.language!);

@@ -8,7 +8,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "reaction-role";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.util.reactionrole" ];
+    public readonly pexes = [  "commands.util.reactionrole" ];
     public readonly options = [
         {
             type: 1,

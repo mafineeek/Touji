@@ -8,7 +8,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "unban";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.mod.unban" ];
+    public readonly pexes = [  "commands.mod.unban" ];
     public readonly options = [{
         type: 6,
         name: "user",

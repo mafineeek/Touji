@@ -2,6 +2,7 @@ import { CommandInteraction } from "discord.js";
 import { Command as BaseCommand, GuildConfig } from "../../types";
 import { execSync } from "child_process";
 import Sender from "../../util/custom/Sender";
+import Config from "../../data/Config";
 
 const lang = new LanguageHandler("en");
 
@@ -18,6 +19,7 @@ export default class Command implements BaseCommand {
     public readonly usage = lang.getStatic(`USAGE_${this.name.split("-").join("").toUpperCase()}`);
     public readonly category = "dev";
     public async run(interaction: CommandInteraction, guildConfig: GuildConfig) {
+        if (!Config.PERMISSIONS.developer.includes(interaction.user.id)) return;
         const sender = new Sender(interaction.channel, guildConfig.language!);
         const code = interaction.options.getString("code")!;
 

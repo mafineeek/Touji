@@ -9,7 +9,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "delete-item";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.economy.deleteitem" ];
+    public readonly pexes = [  "commands.economy.deleteitem" ];
     public readonly options = [{
         type: 10,
         name: "id",

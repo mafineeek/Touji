@@ -8,7 +8,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "edit-item";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.economy.edititem" ];
+    public readonly pexes = [  "commands.economy.edititem" ];
     public readonly options = [
         { type: 10, name: "id", description: lang.setLanguage("en").get("OPT_EDITITEM_ID_DESC"), required: true },
         { type: 3, name: "name", description: lang.setLanguage("en").get("OPT_EDITITEM_NAME_DESC") },

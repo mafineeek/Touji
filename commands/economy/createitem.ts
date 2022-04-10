@@ -10,7 +10,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "create-item";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.economy.createitem" ];
+    public readonly pexes = [  "commands.economy.createitem" ];
     public readonly usage = lang.getStatic(`USAGE_${this.name.split("-").join("").toUpperCase()}`);
     public readonly category = "economy";
     public async run(interaction: CommandInteraction, guildConfig: GuildConfig) {

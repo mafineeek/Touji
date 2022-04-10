@@ -8,7 +8,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "edit-embed";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.mod.editembed" ];
+    public readonly pexes = [  "commands.mod.editembed" ];
     public readonly options = [
         { type: 7, name: "channel", description: lang.setLanguage("en").get("OPT_EDITEMBED_CHANNEL_DESC"), required: true },
         { type: 3, name: "message_id", description: lang.setLanguage("en").get("OPT_EDITEMBED_MESSAGEID_DESC"), required: true },

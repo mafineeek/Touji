@@ -9,7 +9,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "economy-leaderboard";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.economy.economyleaderboard" ];
+    public readonly pexes = [  "commands.economy.economyleaderboard" ];
     public readonly options = [{
         type: 3,
         name: "mode",

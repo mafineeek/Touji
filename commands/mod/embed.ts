@@ -9,7 +9,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "embed";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.mod.embed" ];
+    public readonly pexes = [  "commands.mod.embed" ];
     public readonly options = [
         { type: 3, name: "description", description: lang.setLanguage("en").get("OPT_EMBED_DESCRIPTION_DESC"), required: true },
         { type: 3, name: "color", description: lang.setLanguage("en").get("OPT_EMBED_COLOR_DESC"), required: true },

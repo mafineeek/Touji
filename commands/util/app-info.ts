@@ -8,7 +8,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "app-info";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.util.appinfo" ];
+    public readonly pexes = [  "commands.util.appinfo" ];
     public readonly options = [ {
         type: 3,
         name: "app_id",

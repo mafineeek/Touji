@@ -11,7 +11,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "reminder";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.util.reminder" ];
+    public readonly pexes = [  "commands.util.reminder" ];
     public readonly options = [{
         type: 1,
         name: "add",

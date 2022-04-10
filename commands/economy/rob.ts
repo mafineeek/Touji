@@ -9,7 +9,7 @@ export default class Command implements BaseCommand {
     public readonly type = 2;
     public readonly name = "rob";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.economy.rob" ];
+    public readonly pexes = [  "commands.economy.rob" ];
     public readonly usage = lang.getStatic(`USAGE_${this.name.split("-").join("").toUpperCase()}`);
     public readonly category = "economy";
     public async run(interaction: ContextMenuInteraction, guildConfig: GuildConfig) {

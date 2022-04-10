@@ -10,7 +10,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "levels-leaderboard";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.levelling.levelsleaderboard" ];
+    public readonly pexes = [  "commands.levelling.levelsleaderboard" ];
     public readonly usage = lang.getStatic(`USAGE_${this.name.split("-").join("").toUpperCase()}`)
     public readonly category = "levelling";
     public async run(interaction: CommandInteraction, guildConfig: GuildConfig) {

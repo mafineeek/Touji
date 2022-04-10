@@ -12,7 +12,7 @@ export default class Command implements BaseCommand {
   public readonly description = lang.getStatic(
     `DESC_${this.name.split("-").join("").toUpperCase()}`
   );
-  public readonly pexes = ["global.access", "commands.util.config"];
+  public readonly pexes = [ "commands.util.config"];
   public readonly options = [
     {
       type: 2,

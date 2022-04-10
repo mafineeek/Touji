@@ -7,7 +7,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "serverinfo";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.util.serverinfo" ];
+    public readonly pexes = [  "commands.util.serverinfo" ];
     public readonly usage = lang.getStatic(`USAGE_${this.name.split("-").join("").toUpperCase()}`);
     public readonly category = "util";
     public async run(interaction: CommandInteraction, guildConfig: GuildConfig) {

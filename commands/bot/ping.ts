@@ -9,7 +9,7 @@ export default class Command implements BaseCommand {
     public readonly name = "ping";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
     public readonly usage = lang.getStatic(`USAGE_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.bot.ping" ];
+    public readonly pexes = [  "commands.bot.ping" ];
     public readonly category = "bot";
     public async run(interaction: CommandInteraction, guildConfig: GuildConfig) {
         const sender = new Sender(interaction.channel, guildConfig.language!);

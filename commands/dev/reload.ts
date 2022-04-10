@@ -20,6 +20,7 @@ export default class Command implements BaseCommand {
     public readonly usage = lang.getStatic(`USAGE_${this.name.split("-").join("").toUpperCase()}`);
     public readonly category = "dev";
     public async run(interaction: CommandInteraction, guildConfig: GuildConfig) {
+        if (!Config.PERMISSIONS.developer.includes(interaction.user.id)) return;
         const sender = new Sender(interaction.channel, guildConfig.language!);
         const commandName = interaction.options.getString("command_name")!;
         const command = client.commands.get(commandName);

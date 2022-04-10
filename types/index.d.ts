@@ -2,6 +2,7 @@ import { ApplicationCommandTypes } from "discord.js/typings/enums";
 import Discord from "discord.js";
 import GuildConfigBase from "../util/database/types/GuildConfig";
 
+declare module 'disco-oauth';
 declare module "discord.js" {
     interface GuildMember {
         data: UserData,
@@ -111,7 +112,6 @@ export type NonDMChannel<CAN_BE_THREAD> = CAN_BE_THREAD extends false | undefine
 export type Language = "pl" | "en"
 export type BooleanLike = "yes" | "no" | "tak" | "nie" | "true" | "false" | "ja" | "nein"
 export type MultiLanguageObject = { pl: string, en: string }
-
 export interface Command {
     type?: keyof typeof ApplicationCommandTypes | number,
     name: string,

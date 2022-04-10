@@ -9,7 +9,7 @@ export const checkWin = (board: [string, string, string]) => { return (board[0] 
 export default class Command implements BaseCommand {
     public readonly name = "slot-machine";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.economy.slotmachine" ];
+    public readonly pexes = [  "commands.economy.slotmachine" ];
     public readonly usage = lang.getStatic(`USAGE_${this.name.split("-").join("").toUpperCase()}`);
     public readonly cooldown = 600;
     public readonly category = "economy";

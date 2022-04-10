@@ -8,7 +8,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "kick";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.mod.kick" ];
+    public readonly pexes = [  "commands.mod.kick" ];
     public readonly options = [{
         type: 6,
         name: "user",

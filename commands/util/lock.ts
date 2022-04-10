@@ -7,7 +7,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "lock";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.util.lock" ];
+    public readonly pexes = [  "commands.util.lock" ];
     public readonly options = [
         { type: 5, name: "server", description: lang.setLanguage("en").get("OPT_LOCK_SERVER_DESC") }
     ];

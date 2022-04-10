@@ -13,7 +13,7 @@ export default class Command implements BaseCommand {
   public readonly description = lang.getStatic(
     `DESC_${this.name.split("-").join("").toUpperCase()}`
   );
-  public readonly pexes = ["global.access", "commands.mod.mee6migrate"];
+  public readonly pexes = [ "commands.mod.mee6migrate"];
   public readonly usage = lang.getStatic(
     `USAGE_${this.name.split("-").join("").toUpperCase()}`
   );

@@ -9,34 +9,8 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "permissions";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.util.permissions" ];
+    public readonly pexes = [  "commands.util.permissions" ];
     public readonly options = [
-        {
-            type: 2,
-            name: "global",
-            description: lang.setLanguage("en").get("OPT_PERMISSIONS_MANAGEGLOBAL_DESC"),
-            options: [{
-                type: 1,
-                name: "add-permission",
-                description: lang.setLanguage("en").get("OPT_PERMISSIONS_ADDGLOBALPERMISSIONS_DESC"),
-                options: [{
-                    type: 3,
-                    name: "pex",
-                    description: lang.setLanguage("en").get("OPT_PERMISSIONS_PEX_DESC"),
-                    required: true
-                }]
-            }, {
-                type: 1,
-                name: "remove-permission",
-                description: lang.setLanguage("en").get("OPT_PERMISSIONS_REMOVEGLOBALPERMISSIONS_DESC"),
-                options: [{
-                    type: 3,
-                    name: "pex",
-                    description: lang.setLanguage("en").get("OPT_PERMISSIONS_PEX_DESC"),
-                    required: true
-                }]
-            }]
-        },
         {
             type: 2,
             name: "group",
@@ -217,69 +191,6 @@ export default class Command implements BaseCommand {
         lang.setLanguage(guildConfig.language!);
 
         switch (interaction.options.getSubcommandGroup()) {
-            case "global": {
-                if (
-                  !(await client.database.permissions.has(
-                    interaction.user.id,
-                    interaction.guildId!,
-                    "global.access"
-                  ))
-                )
-                  return await interaction.followUp({
-                    embeds: [
-                      sender.permissionError(
-                        ["global.access"],
-                        lang.get(
-                          "DATA_COMMANDS_PERMISSIONS_NOGLOBALPERMISSIONS"
-                        )
-                      ),
-                    ],
-                  });
-
-                switch (interaction.options.getSubcommand()) {
-                    case "add-permission": {
-                        const pex = interaction.options.getString("pex")!;
-
-                        if (!client.pexes.includes(pex)) return await interaction.followUp({
-                            embeds: [sender.error(lang.get("DATA_COMMANDS_PERMISSIONS_INVALIDPEX"))]
-                        });
-
-                        if (await client.database.permissions.addGlobal(pex)) await interaction.followUp({
-                            embeds: [sender.success(lang.get("DATA_COMMANDS_PERMISSIONS_SUCCESS_ADDGLOBALPEX", [{
-                                old: "pex",
-                                new: pex
-                            }]))]
-                        }); else await interaction.followUp({
-                            embeds: [sender.error(lang.get("DATA_COMMANDS_PERMISSIONS_ERROR_ADDGLOBALPEX", [{
-                                old: "pex",
-                                new: pex
-                            }]))]
-                        });
-                        break
-                    }
-                    case "remove-permission": {
-                        const pex = interaction.options.getString("pex")!;
-
-                        if (!client.pexes.includes(pex)) return await interaction.followUp({
-                            embeds: [sender.error(lang.get("DATA_COMMANDS_PERMISSIONS_INVALIDPEX"))]
-                        });
-
-                        if (await client.database.permissions.removeGlobal(pex)) await interaction.followUp({
-                            embeds: [sender.success(lang.get("DATA_COMMANDS_PERMISSIONS_SUCCESS_REMOVEDGLOBALPEX", [{
-                                old: "pex",
-                                new: pex
-                            }]))]
-                        }); else await interaction.followUp({
-                            embeds: [sender.error(lang.get("DATA_COMMANDS_PERMISSIONS_ERROR_REMOVEDGLOBALPEX", [{
-                                old: "pex",
-                                new: pex
-                            }]))]
-                        });
-                        break
-                    }
-                }
-                break
-            }
             case "group": {
                 switch (interaction.options.getSubcommand()) {
                     case "add-permission": {

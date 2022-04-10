@@ -9,7 +9,7 @@ const lang = new LanguageHandler("en");
 export default class Command implements BaseCommand {
     public readonly name = "birthday";
     public readonly description = lang.getStatic(`DESC_${this.name.split("-").join("").toUpperCase()}`);
-    public readonly pexes = [ "global.access", "commands.util.birthday" ];
+    public readonly pexes = [  "commands.util.birthday" ];
     public readonly options = [
         {
             type: 1,

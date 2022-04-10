@@ -4,6 +4,10 @@ const app = express();
 import flash from 'connect-flash';
 import methodOverride from 'method-override'
 import {client} from '../'
+import Auth from './modules/auth.module'
+import authClient from './auth/client'
+import cookieParser from 'cookie-parser';
+app.use(cookieParser())
 app.use("public", express.static(__dirname + '/public'));
 app.use("/img", express.static(__dirname + '/public/img'));
 app.use("/css", express.static(__dirname + '/public/css'));
@@ -27,9 +31,16 @@ app.get('/', (req: any, res: any) => {
     });
 });
 
+app.use('/', Auth)
+
 import ModuleHandler from './ModuleHandler';
 ModuleHandler(app);
 
+
+app.use((req, res) => {
+    const { link, state } = authClient.auth;
+    res.cookie("user-state", state);
+})
 
 app.get('*', (req: any, res: any) => {
     res.status(404).render("404.ejs", {
@@ -37,6 +48,7 @@ app.get('*', (req: any, res: any) => {
         bot: client
     });
 });
+
 
 app.use((err: Error, req: any, res: any, next: any) => {
     if (err.stack!.toString().includes("Failed to fetch user's guilds")) return res.redirect("/dashboard/api/auth");
