@@ -1,7 +1,6 @@
 export default class Config {
   static BETA = false;
-  static BETA_TOKEN =
-    "";
+  static BETA_TOKEN = "";
   static TOKEN = "";
   static DEFAULTS = {
     language: "en",
@@ -43,7 +42,5 @@ export default class Config {
       redirect: "",
     },
   };
-  static ERROR_WEBHOOKS = [
-    "",
-  ];
+  static ERROR_WEBHOOKS = [""];
 }

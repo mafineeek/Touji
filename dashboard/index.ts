@@ -60,5 +60,5 @@ app.use((err: Error, req: any, res: any, next: any) => {
 });
 
 
-app.listen(3000);
+app.listen(8089);
 client.logger.success(`Dashboard is listening on port 3000`)
