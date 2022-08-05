@@ -3,7 +3,6 @@
   "version": "0.4",
   "description": "",
   "main": "index.ts",
-  "type": "module",
   "scripts": {
     "test": "echo \"OK\"",
     "bot": "ts-node index.ts"
@@ -30,7 +29,7 @@
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.6",
     "dayjs": "^1.10.6",
-    "del": "^6.0.0",
+    "del": "^6.1.0",
     "disco-oauth": "^5.1.1",
     "discord-api-types": "^0.30.0",
     "discord.js": "^13.6.0",
