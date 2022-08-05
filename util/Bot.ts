@@ -53,7 +53,7 @@ export default class Bot extends Client {
         
         require("./custom/ExtendedStructures").default();
         readdirSync("util/intervals").forEach((f: string) => {
-            require(`./intervals/${Config.BETA ? f.replace('.ts', '.js') : f}`).default(this);
+            require(`./intervals/${!Config.BETA ? f.replace('.ts', '.js') : f}`).default(this);
         })
         
         Config.PERMISSIONS.developer.forEach((developer: string) => {
